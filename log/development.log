@@ -1655,3 +1655,70 @@ Migrating to AddStatusToComments (20241216071351)
   [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241216071351') RETURNING "version" /*application='Railsblog'*/[0m
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Railsblog'*/[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Railsblog'*/[0m
+Started GET "/" for ::1 at 2024-12-15 23:51:24 -0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Railsblog'*/[0m
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "articles" WHERE "articles"."status" = 'public' /*action='index',application='Railsblog',controller='articles'*/[0m
+  ↳ app/models/concerns/visible.rb:12:in `public_count'
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" /*action='index',application='Railsblog',controller='articles'*/[0m
+  ↳ app/views/articles/index.html.erb:6
+  Rendered articles/index.html.erb within layouts/application (Duration: 15.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 15.5ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 246ms (ActiveRecord: 1.9ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `artical' for an instance of #<Class:0x0000000112e70960>)
+Caused by: NameError (undefined local variable or method `artical' for an instance of #<Class:0x0000000112e70960>)
+
+Information for: ActionView::Template::Error (undefined local variable or method `artical' for an instance of #<Class:0x0000000112e70960>):
+    4: 
+    5: <ul>
+    6:   <% @articles.each do |article| %>
+    7:     <% unless artical.archived? %>
+    8:         <li>
+    9:             <%= link_to article.title, article %>
+   10:         </li>
+  
+app/views/articles/index.html.erb:7
+app/views/articles/index.html.erb:6
+
+Information for cause: NameError (undefined local variable or method `artical' for an instance of #<Class:0x0000000112e70960>):
+  
+app/views/articles/index.html.erb:7
+app/views/articles/index.html.erb:6
+Started GET "/" for ::1 at 2024-12-15 23:51:25 -0800
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "articles" WHERE "articles"."status" = 'public' /*action='index',application='Railsblog',controller='articles'*/[0m
+  ↳ app/models/concerns/visible.rb:12:in `public_count'
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" /*action='index',application='Railsblog',controller='articles'*/[0m
+  ↳ app/views/articles/index.html.erb:6
+  Rendered articles/index.html.erb within layouts/application (Duration: 2.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 83ms (ActiveRecord: 0.2ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `artical' for an instance of #<Class:0x0000000112e70960>)
+Caused by: NameError (undefined local variable or method `artical' for an instance of #<Class:0x0000000112e70960>)
+
+Information for: ActionView::Template::Error (undefined local variable or method `artical' for an instance of #<Class:0x0000000112e70960>):
+    4: 
+    5: <ul>
+    6:   <% @articles.each do |article| %>
+    7:     <% unless artical.archived? %>
+    8:         <li>
+    9:             <%= link_to article.title, article %>
+   10:         </li>
+  
+app/views/articles/index.html.erb:7
+app/views/articles/index.html.erb:6
+
+Information for cause: NameError (undefined local variable or method `artical' for an instance of #<Class:0x0000000112e70960>):
+  
+app/views/articles/index.html.erb:7
+app/views/articles/index.html.erb:6
